@@ -2,16 +2,27 @@
 <html>
 <head>
     <link rel="stylesheet" href="Google-Sheet.css">
+    <title>Henna-Abend Rückmeldung</title>
 </head>
 <body>
     <div class="container">
         <form method="post" action="https://script.google.com/macros/s/AKfycbxaiz9nhd4M-pGywi3VsfbF3wQjlEcAGgIYcFh5MW8HdP0rtSNBJpX_ZR2LPSi40BLw/exec" name="contact-form">
-            <h4>Contact Us</h4>
-            <input type="text" name="your-name" placeholder="Name">
-            <input type="text" name="your-number" placeholder="Anzahl Begleitpersonen (ohne dich)">
-            <input type="text" name="name-begleitperson" placeholder="Namen der Begleitpersonen:">
-            <textarea name="message" rows="7" placeholder="Bemerkungen (z. B. Allergien, Wünsche):"></textarea>
-            <input type="submit" value="Submit" id="submit">
+            <h1>Rückmeldung für den Henna-Abend</h1>
+            <p>Wir freuen uns, dass du an unserem besonderen Tag teilnimmst! Bitte fülle das Formular aus, damit wir besser planen können.</p>
+
+            <label for="your-name">Dein Name:</label>
+            <input type="text" id="your-name" name="your-name" placeholder="Bitte deinen vollständigen Namen eingeben" required>
+
+            <label for="your-number">Anzahl der Begleitpersonen (ohne dich):</label>
+            <input type="number" id="your-number" name="your-number" placeholder="Z. B. 2" required>
+
+            <label for="name-begleitperson">Namen der Begleitpersonen:</label>
+            <input type="text" id="name-begleitperson" name="name-begleitperson" placeholder="Z. B. Max, Anna, Tom">
+
+            <label for="message">Bemerkungen (z. B. Allergien, Wünsche):</label>
+            <textarea id="message" name="message" rows="5" placeholder="Hast du besondere Wünsche oder Informationen für uns?"></textarea>
+
+            <input type="submit" value="Rückmeldung senden" id="submit">
         </form>
     </div>
     <script src="Google-Sheet.js"></script>
