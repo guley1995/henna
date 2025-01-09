@@ -1,68 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Henna-Abend Rückmeldung</title>
-</head>
 <body>
-    <h1>Rückmeldung für den Henna-Abend</h1>
-    <p>Bitte gib uns Bescheid, ob du teilnehmen kannst und wer dich begleitet.</p>
-    
-    <form id="hennaForm">
-        <label for="name">Dein Name:</label><br>
-        <input type="text" id="name" name="name" placeholder="Dein Name" required><br><br>
-        
-        <label for="anzahl">Anzahl der Begleitpersonen (ohne dich):</label><br>
-        <input type="number" id="anzahl" name="anzahl" placeholder="Wie viele Personen kommen mit?" required><br><br>
-        
-        <label for="begleitung">Namen der Begleitpersonen:</label><br>
-        <textarea id="begleitung" name="begleitung" placeholder="Trage hier die Namen der Begleitpersonen ein"></textarea><br><br>
-        
-        <label for="bemerkung">Bemerkungen (z. B. Allergien, Wünsche):</label><br>
-        <textarea id="bemerkung" name="bemerkung" placeholder="Deine Nachricht"></textarea><br><br>
-        
-        <button type="button" onclick="submitForm()">Senden</button>
-    </form>
-
-    <script>function submitForm() {
-    const formData = {
-        name: document.getElementById("name").value.trim(),
-        anzahl: document.getElementById("anzahl").value.trim(),
-        begleitung: document.getElementById("begleitung").value.trim(),
-        bemerkung: document.getElementById("bemerkung").value.trim(),
-    };
-
-    console.log("Form Data:", formData); // Prüfe, ob die Daten korrekt gesammelt werden
-
-    fetch("https://script.google.com/macros/s/AKfycbyHBW5U0lof3VyjxLikb-pbZ3EK5IkqaGggB6TKp2DSya8Ys0NKIvlzrndNLotMxN333g/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        mode: "cors"
-    })
-    .then(response => {
-        console.log("Response:", response); // Prüfe die Antwort der API
-        if (!response.ok) {
-            throw new Error(`HTTP-Fehler: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Response Data:", data); // Prüfe den Inhalt der Antwort
-        if (data.status === "success") {
-            alert("Vielen Dank für deine Rückmeldung!");
-            document.getElementById("hennaForm").reset();
-        } else {
-            alert(`Fehler: ${data.message}`);
-        }
-    })
-    .catch(error => {
-        console.error("Fehler beim Senden der Anfrage:", error);
-        alert("Es gab ein Problem beim Absenden. Bitte versuche es später erneut.");
-    });
-}
-    </script>
-</body>
-</html>
+    <div class="container">
+      <form method="post" action="" name="contact-form">
+        <h4>Contact Us</h4>
+        <input type="text" name="your-name" placeholder="Name">
+        <input type="text" name="your-number" placeholder="Anzahl Begleitpersonen (ohne dich)">
+        <input type="text" name="name-begleitperson" placeholder="Namen der Begleitpersonen:">
+        <textarea name="message" rows="7" placeholder="Bemerkungen (z. B. Allergien, Wünsche):">
+        </textarea>
+        <input type="submit" value="Submit" id="submit">
+          </form>
+      </div>
+  </body>
