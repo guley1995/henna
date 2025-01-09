@@ -23,8 +23,7 @@
         <button type="button" onclick="submitForm()">Senden</button>
     </form>
 
-    <script>
-      function submitForm() {
+    <script>function submitForm() {
     const formData = {
         name: document.getElementById("name").value.trim(),
         anzahl: document.getElementById("anzahl").value.trim(),
@@ -32,22 +31,26 @@
         bemerkung: document.getElementById("bemerkung").value.trim(),
     };
 
-fetch("https://script.google.com/macros/s/AKfycbyAegftu1F2LPH5W1DmzFNeDNi0ARSk5wP1FOH03NdxndCzjMx68YiRgt-WA2WAbf_m1A/exec", {
-    method: "POST",
-    body: JSON.stringify(formData),
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    },
-    mode: "cors" // Erlaubt CORS-Anfragen
-})
+    console.log("Form Data:", formData); // Prüfe, ob die Daten korrekt gesammelt werden
+
+    fetch("https://script.google.com/macros/s/AKfycbzSP1vNivRyGOR1cUyH8I392aokntUsStbPdj6_K3aFKpAORPfsYLGXpYBygsRnhUXJ5g/exec", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        mode: "cors"
+    })
     .then(response => {
+        console.log("Response:", response); // Prüfe die Antwort der API
         if (!response.ok) {
             throw new Error(`HTTP-Fehler: ${response.status}`);
         }
         return response.json();
     })
     .then(data => {
+        console.log("Response Data:", data); // Prüfe den Inhalt der Antwort
         if (data.status === "success") {
             alert("Vielen Dank für deine Rückmeldung!");
             document.getElementById("hennaForm").reset();
