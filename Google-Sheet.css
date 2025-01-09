@@ -1,45 +1,122 @@
-*{
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	font-family: 'poppins', sans-serif;
-	font-size: 18px;
+/* Allgemeine Einstellungen */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
 }
-body{
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+    color: #333;
+    padding: 10px;
 }
-.container{
-	width: 500px;
-	padding: 30px;
-	border: 1px solid #eeeeee;
-	border-radius: 10px;
-	background-color: #003b5b;
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
-h4{
-	margin-bottom: 10px;
-	font-size: 24px;
-	color: white;
+
+/* Titel und Beschreibung */
+h1 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #003b5b;
+    text-align: center;
 }
-input{
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 10px;
+
+p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #666;
 }
-textarea{
-	width: 100%;
-	padding: 10px;
+
+/* Formularelemente */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #003b5b;
 }
-#submit{
-	border: none;
-	background-color: orangered;
-	color: white;
-	width: 200px;
-	margin-top: 10px;
-	border-radius: 5px;
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-#submit:hover{
-	background-color: #333333;
+
+input:focus, textarea:focus {
+    border-color: #ff6666;
+    box-shadow: 0px 0px 5px rgba(255, 102, 102, 0.5);
+    outline: none;
+}
+
+/* Submit-Button */
+#submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #ff6666;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#submit:hover {
+    background-color: #e05555;
+    box-shadow: 0px 4px 6px rgba(255, 102, 102, 0.4);
+}
+
+/* Responsives Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #submit {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Animationen */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
