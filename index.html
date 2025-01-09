@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Henna-Abend Rückmeldung</title>
+</head>
+<body>
+    <h1>Rückmeldung für den Henna-Abend</h1>
+    <p>Bitte gib uns Bescheid, ob du teilnehmen kannst und wer dich begleitet.</p>
+    
+    <form id="hennaForm">
+        <label for="name">Dein Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Dein Name" required><br><br>
+        
+        <label for="anzahl">Anzahl der Begleitpersonen (ohne dich):</label><br>
+        <input type="number" id="anzahl" name="anzahl" placeholder="Wie viele Personen kommen mit?" required><br><br>
+        
+        <label for="begleitung">Namen der Begleitpersonen:</label><br>
+        <textarea id="begleitung" name="begleitung" placeholder="Trage hier die Namen der Begleitpersonen ein"></textarea><br><br>
+        
+        <label for="bemerkung">Bemerkungen (z. B. Allergien, Wünsche):</label><br>
+        <textarea id="bemerkung" name="bemerkung" placeholder="Deine Nachricht"></textarea><br><br>
+        
+        <button type="button" onclick="submitForm()">Senden</button>
+    </form>
+
+    <script>
+      function submitForm() {
+    const formData = {
+        name: document.getElementById("name").value.trim(),
+        anzahl: document.getElementById("anzahl").value.trim(),
+        begleitung: document.getElementById("begleitung").value.trim(),
+        bemerkung: document.getElementById("bemerkung").value.trim(),
+    };
+
+fetch("https://script.google.com/macros/s/AKfycbyAegftu1F2LPH5W1DmzFNeDNi0ARSk5wP1FOH03NdxndCzjMx68YiRgt-WA2WAbf_m1A/exec", {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    },
+    mode: "cors" // Erlaubt CORS-Anfragen
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP-Fehler: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === "success") {
+            alert("Vielen Dank für deine Rückmeldung!");
+            document.getElementById("hennaForm").reset();
+        } else {
+            alert(`Fehler: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error("Fehler beim Senden der Anfrage:", error);
+        alert("Es gab ein Problem beim Absenden. Bitte versuche es später erneut.");
+    });
+}
+    </script>
+</body>
+</html>
